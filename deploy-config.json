@@ -1,6 +1,6 @@
 {
   "github": {
-    "repository": "",
+    "repository": "https://github.com/mm1025048717-hash/hairshop-chatbi.git",
     "branch": "main",
     "autoCommit": true,
     "commitMessagePrefix": "🚀 自动部署: "
