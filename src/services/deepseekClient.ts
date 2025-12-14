@@ -11,7 +11,8 @@ export type DeepSeekChatOptions = {
 };
 
 // DeepSeek API配置
-const DEEPSEEK_API_KEY = 'sk-067ac9f5b8474183b49639fd74bda259';
+// 优先使用环境变量，如果没有则使用默认值（仅用于开发测试）
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY || process.env.EXPO_PUBLIC_DEEPSEEK_API_KEY || 'sk-067ac9f5b8474183b49639fd74bda259';
 const REQUEST_TIMEOUT = 30000; // 30秒超时
 
 // 检测是否在浏览器环境运行，使用代理服务器绕过CORS
