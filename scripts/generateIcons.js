@@ -1,0 +1,46 @@
+/**
+ * 简单的图标生成脚本
+ * 运行: node scripts/generateIcons.js
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+// 1x1 透明PNG (最小有效PNG)
+const minimalPNG = Buffer.from([
+  0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A, // PNG signature
+  0x00, 0x00, 0x00, 0x0D, // IHDR length
+  0x49, 0x48, 0x44, 0x52, // IHDR
+  0x00, 0x00, 0x00, 0x01, // width: 1
+  0x00, 0x00, 0x00, 0x01, // height: 1
+  0x08, 0x06, // bit depth, color type (RGBA)
+  0x00, 0x00, 0x00, // compression, filter, interlace
+  0x1F, 0x15, 0xC4, 0x89, // CRC
+  0x00, 0x00, 0x00, 0x0A, // IDAT length
+  0x49, 0x44, 0x41, 0x54, // IDAT
+  0x78, 0x9C, 0x63, 0x00, 0x01, 0x00, 0x00, 0x05, 0x00, 0x01, // compressed data
+  0x0D, 0x0A, 0x2D, 0xB4, // CRC
+  0x00, 0x00, 0x00, 0x00, // IEND length
+  0x49, 0x45, 0x4E, 0x44, // IEND
+  0xAE, 0x42, 0x60, 0x82  // CRC
+]);
+
+const assetsDir = path.join(__dirname, '..', 'assets');
+
+// 确保assets目录存在
+if (!fs.existsSync(assetsDir)) {
+  fs.mkdirSync(assetsDir, { recursive: true });
+}
+
+// 生成图标文件
+const icons = ['icon.png', 'splash.png', 'adaptive-icon.png', 'favicon.png'];
+
+icons.forEach(icon => {
+  const iconPath = path.join(assetsDir, icon);
+  fs.writeFileSync(iconPath, minimalPNG);
+  console.log(`Created: ${iconPath}`);
+});
+
+console.log('\n✅ 图标文件已生成！');
+console.log('提示: 这些是占位图标，发布前请替换为真实的图标设计。');
+
