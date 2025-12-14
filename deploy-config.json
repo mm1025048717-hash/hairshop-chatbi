@@ -1,0 +1,20 @@
+{
+  "github": {
+    "repository": "",
+    "branch": "main",
+    "autoCommit": true,
+    "commitMessagePrefix": "🚀 自动部署: "
+  },
+  "git": {
+    "user": {
+      "name": "",
+      "email": ""
+    }
+  },
+  "ignorePatterns": [
+    "node_modules",
+    ".expo",
+    "dist",
+    ".env"
+  ]
+}

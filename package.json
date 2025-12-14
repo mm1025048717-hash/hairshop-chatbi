@@ -12,7 +12,10 @@
     "dev": "concurrently \"npm run proxy\" \"npm run web\"",
     "build:android": "eas build --platform android",
     "build:ios": "eas build --platform ios",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "deploy": "powershell -ExecutionPolicy Bypass -File ./auto-deploy.ps1",
+    "deploy:config": "powershell -ExecutionPolicy Bypass -File ./auto-deploy.ps1 -RepoUrl",
+    "deploy:force": "powershell -ExecutionPolicy Bypass -File ./auto-deploy.ps1 -Force"
   },
   "dependencies": {
     "@expo/metro-runtime": "~3.2.3",
